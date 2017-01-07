@@ -1,10 +1,5 @@
 <html>
-<script> 
-if ('serviceWorker' in navigator) { 
-navigator.serviceWorker 
-.register('./service-worker.js') 
-.then(function() { console.log('Service Worker Registered'); }); 
-} </script>
+
     
     
 <head>
@@ -18,4 +13,12 @@ navigator.serviceWorker
 <body>
 <canvas id="canvas" height="680" width="800"></canvas>
 </body>
+    <script>
+<script>$(document).ready(function(){ 
+if ('serviceWorker' in navigator) { 
+navigator.serviceWorker 
+.register('./service-worker.js') 
+.then(function() { console.log('Service Worker Registered'); }); 
+} 
+});</script>
 </html>
