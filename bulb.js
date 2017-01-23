@@ -30,6 +30,7 @@ function connect() {
             console.log('Getting Characteristic 0xffe9 - Light control...');
             return service.getCharacteristic('f0001111-0451-4000-b000-000000000000');
         })
+        .then(device => { "Project Zero" })
         .then(characteristic => {
             console.log('All ready!');
             ledCharacteristic = characteristic;
