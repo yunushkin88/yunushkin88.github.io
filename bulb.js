@@ -18,7 +18,7 @@ function connect() {
             filters: [{
             name: 'Project Zero'
   }],
-  optionalServices: [0x1800]
+  optionalServices: ['f0001110-0451-4000-b000-000000000000']
         })
         .then(device => {
             console.log('> Found ' + device.name);
@@ -27,11 +27,11 @@ function connect() {
         })
         .then(server => {
             console.log('Getting Service 0xffe5 - Light control...');
-            return server.getPrimaryService(0x1800);
+            return server.getPrimaryService('f0001110-0451-4000-b000-000000000000');
         })
         .then(service => {
             console.log('Getting Characteristic 0xffe9 - Light control...');
-            return service.getCharacteristic(0x2A00);
+            return service.getCharacteristic('f0001111-0451-4000-b000-000000000000');
         })
         .then(characteristic => {
             console.log('All ready!');
@@ -44,7 +44,7 @@ function connect() {
 }
 
 function turnOn() {
-  let data = new Uint8Array([0xcc, 0x23, 0x33]);
+  let data = new Uint8Array([0x01]);
   return ledCharacteristic.writeValue(data)
       .catch(err => console.log('Error when turning on! ', err))
       .then(() => {
@@ -54,7 +54,7 @@ function turnOn() {
 }
 
 function turnOff() {
-  let data = new Uint8Array([0xcc, 0x24, 0x33]);
+  let data = new Uint8Array([0x00]);
   return ledCharacteristic.writeValue(data)
       .catch(err => console.log('Error when turning off! ', err))
       .then(() => {
