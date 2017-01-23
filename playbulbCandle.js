@@ -6,11 +6,11 @@
 
   /* Custom Bluetooth Service UUIDs */
 
-  const CANDLE_SERVICE_UUID = 0xFF02;
+  const CANDLE_SERVICE_UUID = 0x1800;
 
   /* Custom Bluetooth Characteristic UUIDs */
 
-  const CANDLE_DEVICE_NAME_UUID = 0xFFFF;
+  const CANDLE_DEVICE_NAME_UUID = 0x2A00;
   const CANDLE_COLOR_UUID = 0xFFFC;
   const CANDLE_EFFECT_UUID = 0xFFFB;
   const CANDLE_BLOW_NOTIFICATIONS_UUID = 0x2A37;
@@ -24,8 +24,8 @@
       this._debug = false;
     }
     request() {
-      let options = {filters:[{services:[ CANDLE_SERVICE_UUID ]}],
-                     optionalServices: ['battery_service']};
+      let options = {filters:[{services:[ CANDLE_SERVICE_UUID ]}]
+                    };
       return navigator.bluetooth.requestDevice(options)
       .then(device => {
         this.device = device;
@@ -47,8 +47,8 @@
               this._cacheCharacteristic(service, CANDLE_BLOW_NOTIFICATIONS_UUID),
             ])
           }),
-          server.getPrimaryService('battery_service').then(service => {
-            return this._cacheCharacteristic(service, 'battery_level')
+          server.getPrimaryService(CANDLE_DEVICE_NAME_UUID).then(service => {
+            return this._cacheCharacteristic(service, CANDLE_DEVICE_NAME_UUID)
           }),
         ]);
       })
