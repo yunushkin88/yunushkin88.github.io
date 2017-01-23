@@ -1,15 +1,17 @@
 {
-  "short_name": "PLAYBULB",
-  "name": "PLAYBULB Candle Demo",
-  "background_color": "#333333",
-  "theme_color": "#333333",
+  "lang": "en",
+  "background_color": "#2c1a31",
+  "theme_color": "#2c1a31",
+  "name": "Web Light Bulb",
+  "short_name": "Web Light",
+  "display": "standalone",
+  "start_url": "index.html",
+  "orientation": "portrait",
   "icons": [
     {
-      "src": "../favicon.png",
-      "sizes": "192x192",
+      "src": "images/icon.png",
+      "sizes": "144x144",
       "type": "image/png"
     }
-  ],
-  "display": "standalone",
-  "orientation": "portrait"
+  ]
 }
