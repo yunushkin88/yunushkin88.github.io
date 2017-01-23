@@ -18,7 +18,8 @@ function connect() {
           filters: [{
             name: 'Project Zero'
             }],
-            // filters: [{ services: ['f0001110-0451-4000-b000-000000000000'] }]
+           optionalServices: ['f0001110-0451-4000-b000-000000000000']
+           
         })
         .then(device => {
             console.log('> Found ' + device.name);
