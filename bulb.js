@@ -15,7 +15,7 @@ function connect() {
     console.log('Requesting Bluetooth Device...');
     navigator.bluetooth.requestDevice(
         {
-            filters: [{ services: [0xffe5] }]
+            filters: [{ services: [0x1110] }]
         })
         .then(device => {
             console.log('> Found ' + device.name);
@@ -24,11 +24,11 @@ function connect() {
         })
         .then(server => {
             console.log('Getting Service 0xffe5 - Light control...');
-            return server.getPrimaryService(0xffe5);
+            return server.getPrimaryService(0x1110);
         })
         .then(service => {
             console.log('Getting Characteristic 0xffe9 - Light control...');
-            return service.getCharacteristic(0xffe9);
+            return service.getCharacteristic(0x1111);
         })
         .then(characteristic => {
             console.log('All ready!');
